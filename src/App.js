@@ -2,10 +2,11 @@ import "./App.css";
 import { ImLeaf } from "react-icons/im";
 import { FaGripLines } from "react-icons/fa";
 import { ImPlay3 } from "react-icons/im";
-import { AiOutlineRight } from "react-icons/ai";
+import { AiOutlineRight, AiOutlineClose } from "react-icons/ai";
 
 import { useViewportScroll, motion, useTransform } from "framer-motion";
 import { useInView } from "react-intersection-observer";
+import { useState } from "react";
 
 function App() {
 	const { scrollYProgress, scrollY } = useViewportScroll();
@@ -16,13 +17,14 @@ function App() {
 	const smallImageHeight = useTransform(scrollY, [0, 200], [0, 288]);
 	const largeImageHeight = useTransform(scrollY, [0, 600], [0, 448]);
 
-	const transition = { duration: 1.4, ease: [0.6, 0.1, -0.5, 0.9] };
+	const transition = { duration: 1, ease: [0.6, 0.1, -0.5, 0.9] };
 
 	const [ref, inView] = useInView({
-		threshold: 0.5,
-		triggerOnce: false,
+		threshold: 0.2,
+		triggerOnce: true,
 	});
 
+	// Title and Button Variant
 	const variants = {
 		visible: { opacity: 1, x: 0 },
 		hidden: {
@@ -31,18 +33,97 @@ function App() {
 		},
 	};
 
+	//Check if images are in view
+	const [imageSmallRef, smallImageInView] = useInView({
+		threshold: 0.9,
+		triggerOnce: true,
+	});
+
+	const [imageLargeRef, largeImageInView] = useInView({
+		threshold: 0.9,
+		triggerOnce: true,
+	});
+
+	const imageVariants = {
+		beforeLoad: { height: 0, width: 288 },
+		afterLoad: { height: 288, width: 288 },
+	};
+
+	const ifMobile = window.innerWidth < 481;
+
+	let smallImageElement, largeImageElement;
+	if (!ifMobile) {
+		//Large Screens
+		//If not in view increase height on scroll
+		smallImageElement = (
+			<motion.img
+				src={require("./assets/paraone.webp")}
+				type="image/webp"
+				className="image-small"
+				alt="tea field"
+				style={{ height: smallImageHeight, width: 288 }}
+			/>
+		);
+		largeImageElement = (
+			<motion.img
+				src={require("./assets/paratwo.webp")}
+				type="image/webp"
+				className="image-large"
+				alt="tea fields and people working"
+				style={{ height: largeImageHeight, width: 448 }}
+			/>
+		);
+	} else {
+		//Mobile Screens
+		smallImageElement = (
+			<motion.img
+				src={require("./assets/paraone.webp")}
+				type="image/webp"
+				className="image-small"
+				alt="tea field"
+				ref={imageSmallRef}
+				variants={imageVariants}
+				animate={smallImageInView ? "afterLoad" : "beforeLoad"}
+			/>
+		);
+		largeImageElement = (
+			<motion.img
+				src={require("./assets/paratwo.webp")}
+				type="image/webp"
+				className="image-large"
+				alt="tea fields and people working"
+				ref={imageLargeRef}
+				variants={imageVariants}
+				animate={largeImageInView ? "afterLoad" : "beforeLoad"}
+			/>
+		);
+	}
+
+	//Mobile Nav
+	const [mobileNavStatus, setMobileNavStatus] = useState(false);
+
 	return (
 		<div className="App">
 			<header>
-				<ImLeaf />
-				<nav>
+				<ImLeaf className="leafy-icon" />
+				<nav className={mobileNavStatus ? "isExpanded" : "notExpanded"}>
 					<ul>
 						<li>About Us </li>
 						<li>Collections</li>
 						<li>Partnerships</li>
 					</ul>
 				</nav>
-				<FaGripLines />
+				{!mobileNavStatus && <span className="nav-title">Art of Tea</span>}
+				<div
+					className="nav-icon-container"
+					onClick={() => setMobileNavStatus(!mobileNavStatus)}
+				>
+					{mobileNavStatus ? (
+						<AiOutlineClose className="close-icon" />
+					) : (
+						<FaGripLines className="ham-icon" />
+					)}
+				</div>
 			</header>
 			<div className="sidebar sidebar-left">
 				<div className="vertical-line-before"></div>
@@ -73,7 +154,7 @@ function App() {
 					<motion.div
 						className="bush-container"
 						style={{ y: bushY, scale: scale }}
-						initial={{ scale: 1.1, y: 0 }}
+						initial={{ scale: 1, y: 0 }}
 						animate={{
 							transition: { ...transition },
 						}}
@@ -106,24 +187,10 @@ function App() {
 									fair trade or both!
 								</div>
 							</div>
-							<motion.img
-								src={require("./assets/paraone.jpg")}
-								type="image/jpeg"
-								className="image-small"
-								alt="tea field"
-								style={{ height: smallImageHeight, width: 288 }}
-								initial={{ height: 0, width: 288 }}
-								animate={{ transition: { ...transition } }}
-							/>
+							{smallImageElement}
 						</div>
 						<div className="card card-two">
-							<motion.img
-								src={require("./assets/paratwo.jpg")}
-								type="image/jpeg"
-								className="image-large"
-								alt="tea fields and people working"
-								style={{ height: largeImageHeight, width: 448 }}
-							/>
+							{largeImageElement}
 							<div className="text-container card-two-text">
 								<motion.h3
 									animate={inView ? "visible" : "hidden"}

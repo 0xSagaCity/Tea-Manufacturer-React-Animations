@@ -15,6 +15,8 @@
 	background-size: 100% 100vh;
 	display: flex;
 	flex-direction: column;
+	overflow-x: hidden;
+	overscroll-behavior-x: none;
 }
 
 svg {
@@ -88,7 +90,7 @@ svg {
 
 header {
 	display: flex;
-	height: 6rem;
+	min-height: 4rem;
 	align-items: center;
 	width: 100%;
 	margin-inline: auto;
@@ -97,16 +99,26 @@ header {
 	top: 0;
 	left: 0;
 	padding-inline: 5%;
+	padding-block: 3rem;
 	transition: 500ms;
 	z-index: 9999;
+	backdrop-filter: blur(10px);
 }
 
 header > svg {
 	font-size: 1.6em;
 }
 
+.nav-icon-container {
+	display: none;
+}
+
 nav {
 	flex-grow: 1;
+}
+
+.nav-title {
+	display: none;
 }
 
 ul {
@@ -124,37 +136,34 @@ li {
 }
 
 .section-one {
+	min-height: 100vh;
 	width: 90%;
 	margin-inline: auto;
 	padding-inline-start: 10%;
-	padding-block-start: 18rem;
-	padding-block-end: 26rem;
-	font-family: "Playfair Display", serif;
-	font-weight: 700;
-	font-size: 4.6em;
 }
 
 .section-two {
-	height: 90vh;
+	min-height: 100vh;
 	z-index: 1;
 }
 
 .title {
 	transition: opacity 700ms ease-out;
+	font-family: "Playfair Display", serif;
+	font-weight: 700;
+	font-size: 6em;
+	padding-block-start: 30vh;
 }
 
 .bush-container {
 	min-height: 26rem;
 	margin-block-start: -24rem;
-	background: linear-gradient(
-			rgba(23, 24, 23, 0),
-			rgba(23, 24, 23, 1) 80%,
-			rgba(23, 24, 23, 1) 100%
-		),
+	background: linear-gradient(rgba(23, 24, 23, 0), rgba(23, 24, 23, 1)),
 		url("./assets/bush.webp");
 	background-size: cover;
 	background-repeat: no-repeat;
 	position: relative;
+	max-width: 100vw;
 }
 
 .container-box {
@@ -175,8 +184,8 @@ li {
 	position: relative;
 	width: 90%;
 	margin-inline: auto;
-	padding-inline-start: 10%;
-	padding-inline-end: 10%;
+	padding-inline: 10%;
+	gap: 2rem;
 }
 
 .card-one {
@@ -185,7 +194,7 @@ li {
 }
 
 .card-two {
-	height: 32rem;
+	min-height: 32rem;
 	gap: 2rem;
 }
 
@@ -199,6 +208,10 @@ li {
 	font-size: 0.8em;
 }
 
+.section-one {
+	align-items: center;
+}
+
 .circle {
 	aspect-ratio: 1 /1;
 	padding: 1.6rem;
@@ -207,6 +220,7 @@ li {
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	backdrop-filter: blur(2px);
 }
 
 .circle > svg {
@@ -246,11 +260,10 @@ li {
 }
 
 .image-large {
-	object-fit: cover;
-	object-position: top;
 	flex-shrink: 0;
 	flex-grow: 0;
 	align-self: center;
+	object-fit: cover;
 	transition: all 600ms ease-out;
 }
 
@@ -266,6 +279,7 @@ li {
 	justify-content: center;
 	align-items: flex-end;
 	height: 100%;
+	align-self: center;
 }
 
 .card-two-title {
@@ -317,5 +331,71 @@ li {
 @media screen and (max-width: 1200px) {
 	body {
 		font-size: 75%;
+	}
+
+	.sidebar {
+		display: none;
+	}
+}
+
+@media screen and (max-width: 480px) {
+	.App {
+		background-size: auto 100vh;
+		background-position: top center;
+	}
+
+	.container-passage {
+		gap: 18rem;
+		padding-inline: 0;
+	}
+
+	.container-box {
+		padding-inline-start: 0;
+	}
+
+	.card-one,
+	.card-two {
+		flex-direction: column;
+	}
+	.title {
+		font-size: 5em;
+	}
+
+	.nav-icon-container {
+		display: flex;
+	}
+
+	header nav {
+		display: none;
+	}
+
+	.nav-title {
+		display: flex;
+		font-size: 1.2em;
+		text-transform: uppercase;
+		font-weight: 700;
+	}
+
+	header {
+		justify-content: space-between;
+		align-items: flex-start;
+	}
+
+	.isExpanded {
+		display: flex;
+	}
+
+	.isExpanded > ul {
+		width: 100%;
+		flex-direction: column;
+		align-items: center;
+	}
+
+	.section-one {
+		padding: 0;
+	}
+
+	.close-icon {
+		font-size: 2.6em;
 	}
 }

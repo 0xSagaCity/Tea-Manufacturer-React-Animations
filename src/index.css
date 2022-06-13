@@ -9,7 +9,5 @@
 body {
 	font-family: "Raleway", sans-serif;
 	color: white;
-	overflow-x: hidden;
-	overscroll-behavior-y: none;
 	background-color: #181718;
 }
