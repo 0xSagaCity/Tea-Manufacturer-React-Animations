@@ -99,7 +99,7 @@ header {
 	top: 0;
 	left: 0;
 	padding-inline: 5%;
-	padding-block: 3rem;
+	padding-block: 2.4rem;
 	transition: 500ms;
 	z-index: 9999;
 	backdrop-filter: blur(10px);
@@ -132,6 +132,7 @@ li {
 	font-weight: 600;
 	text-transform: uppercase;
 	border-bottom: 2px solid rgba(255, 255, 255, 0.3);
+	padding-block: 0.1rem;
 	cursor: pointer;
 }
 
@@ -216,7 +217,7 @@ li {
 	aspect-ratio: 1 /1;
 	padding: 1.6rem;
 	border-radius: 50%;
-	border: 0.4px solid #b0b0b0;
+	border: 1px solid #808080;
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -312,16 +313,15 @@ li {
 }
 
 .line-before {
-	height: 4rem;
-	width: 4rem;
+	height: 3rem;
+	width: 3rem;
 	position: absolute;
-	top: 0;
-	left: 0;
-	transform: translateY(-25%);
+	top: 50%;
+	left: 52%;
+	transform: translateY(-50%);
 	z-index: -1;
 	border-radius: 50%;
 	border: 1px solid #404040;
-	margin-inline-start: 60%;
 }
 
 .learn-more > svg {
