@@ -1,8 +1,4 @@
 import "./App.css";
-import { ImLeaf } from "react-icons/im";
-import { FaGripLines } from "react-icons/fa";
-import { ImPlay3 } from "react-icons/im";
-import { AiOutlineClose, AiOutlineRight } from "react-icons/ai";
 
 import { motion, useInView, useScroll, useTransform } from "framer-motion";
 import { useRef, useState } from "react";
@@ -115,7 +111,19 @@ function App() {
     return (
         <div className="App">
             <header>
-                <ImLeaf className="leafy-icon" />
+                <svg
+                    className="leafy-icon"
+                    stroke="white"
+                    fill="white"
+                    strokeWidth="0"
+                    version="1.1"
+                    viewBox="0 0 16 16"
+                    height="1em"
+                    width="1em"
+                    xmlns="http://www.w3.org/2000/svg"
+                >
+                    <path d="M15.802 2.102c-1.73-1.311-4.393-2.094-7.124-2.094-3.377 0-6.129 1.179-7.549 3.235-0.667 0.965-1.036 2.109-1.097 3.398-0.054 1.148 0.139 2.418 0.573 3.784 1.482-4.444 5.622-7.923 10.395-7.923 0 0-4.466 1.175-7.274 4.816-0.002 0.002-0.039 0.048-0.103 0.136-0.564 0.754-1.055 1.612-1.423 2.583-0.623 1.482-1.2 3.515-1.2 5.965h2c0 0-0.304-1.91 0.224-4.106 0.873 0.118 1.654 0.177 2.357 0.177 1.839 0 3.146-0.398 4.115-1.252 0.868-0.765 1.347-1.794 1.854-2.882 0.774-1.663 1.651-3.547 4.198-5.002 0.146-0.083 0.24-0.234 0.251-0.402s-0.063-0.329-0.197-0.431z"></path>
+                </svg>
                 <nav className={mobileNavStatus ? "isExpanded" : "notExpanded"}>
                     <ul>
                         <li>About Us</li>
@@ -131,9 +139,27 @@ function App() {
                     onClick={() => setMobileNavStatus(!mobileNavStatus)}
                 >
                     {mobileNavStatus ? (
-                        <AiOutlineClose className="close-icon" />
+                        <svg
+                            width="46"
+                            height="46"
+                            className="close-icon"
+                            fill="white"
+                            viewBox="0 0 24 24"
+                            xmlns="http://www.w3.org/2000/svg"
+                        >
+                            <path d="m12 10.583 4.95-4.95 1.414 1.414-4.95 4.95 4.95 4.95-1.414 1.414L12 13.41l-4.95 4.95-1.414-1.414 4.95-4.95-4.95-4.95L7.05 5.633l4.95 4.95Z"></path>
+                        </svg>
                     ) : (
-                        <FaGripLines className="ham-icon" />
+                        <svg
+                            width="46"
+                            height="46"
+                            fill="white"
+                            className="ham-icon"
+                            viewBox="0 0 24 24"
+                            xmlns="http://www.w3.org/2000/svg"
+                        >
+                            <path d="M3 4h18v2H3V4Zm6 7h12v2H9v-2Zm-6 7h18v2H3v-2Z"></path>
+                        </svg>
                     )}
                 </div>
             </header>
@@ -177,7 +203,15 @@ function App() {
                     >
                         <div className="history-button">
                             <div className="circle">
-                                <ImPlay3 />
+                                <svg
+                                    width="28"
+                                    height="28"
+                                    fill="white"
+                                    viewBox="0 0 24 24"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                >
+                                    <path d="M16.394 12.003 10 7.74v8.526l6.394-4.263Zm2.982.416L8.777 19.485A.5.5 0 0 1 8 19.07V4.937a.5.5 0 0 1 .777-.416l10.599 7.066a.501.501 0 0 1 0 .832Z"></path>
+                                </svg>
                             </div>
                             <span className="history-text">
                                 GREEN HOUSE HISTORY
@@ -256,7 +290,15 @@ function App() {
                                         <div className="arrow-container">
                                             <span className="line-before"></span>
                                             <span className="line"></span>
-                                            <AiOutlineRight />
+                                            <svg
+                                                width="20"
+                                                height="20"
+                                                fill="white"
+                                                viewBox="0 0 24 24"
+                                                xmlns="http://www.w3.org/2000/svg"
+                                            >
+                                                <path d="m13.172 11.997-4.95-4.95 1.414-1.414L16 11.997 9.636 18.36l-1.414-1.414 4.95-4.95Z"></path>
+                                            </svg>
                                         </div>
                                     </motion.span>
                                 </div>
