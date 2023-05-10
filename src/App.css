@@ -196,7 +196,7 @@ li {
 
 .card-one {
     gap: 2rem;
-    height: 18rem;
+    min-height: 18rem;
     justify-content: space-between;
 }
 
@@ -266,6 +266,7 @@ li {
     flex-grow: 0;
     align-self: center;
     object-fit: cover;
+    max-width: 100%;
 }
 
 .card {
@@ -346,20 +347,18 @@ li {
 }
 
 @media screen and (max-width: 1200px) {
-    body {
-        font-size: 75%;
-    }
-
     .sidebar {
         display: none;
     }
 }
 
 @media screen and (max-width: 1000px) {
+    .card-one,
     .card-two {
         flex-direction: column;
     }
 
+    .image-small,
     .image-large {
         align-self: flex-start;
     }
@@ -380,12 +379,8 @@ li {
         padding-inline-start: 0;
     }
 
-    .card-one {
-        flex-direction: column;
-    }
-
     .title {
-        font-size: 5em;
+        font-size: 3.6em;
     }
 
     .nav-icon-container {
@@ -420,6 +415,11 @@ li {
 
     .section-one {
         padding: 0;
+    }
+
+    .close-icon,
+    .ham-icon {
+        cursor: pointer;
     }
 
     .close-icon {

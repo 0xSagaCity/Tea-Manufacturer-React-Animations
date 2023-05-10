@@ -140,8 +140,8 @@ function App() {
                 >
                     {mobileNavStatus ? (
                         <svg
-                            width="46"
-                            height="46"
+                            width="24"
+                            height="24"
                             className="close-icon"
                             fill="white"
                             viewBox="0 0 24 24"
@@ -151,8 +151,8 @@ function App() {
                         </svg>
                     ) : (
                         <svg
-                            width="46"
-                            height="46"
+                            width="24"
+                            height="24"
                             fill="white"
                             className="ham-icon"
                             viewBox="0 0 24 24"
