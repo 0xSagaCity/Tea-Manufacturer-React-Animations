@@ -4,3 +4,5 @@
 <p>This was made using React and Framer motion as this was my attempt at learning framer motion with React.</p>
 
 [Live Site](https://tea-manufacturer.netlify.app/)
+
+https://github.com/0xSagaCity/Tea-Manufacturer-React-Animations/assets/46919700/77beb58d-22eb-499e-ac14-3e066d762ea8
